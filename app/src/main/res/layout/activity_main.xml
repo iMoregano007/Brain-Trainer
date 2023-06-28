@@ -7,54 +7,7 @@
     tools:context=".MainActivity"
     android:background="#272626">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/stroke_background"
-        android:padding="5dp"
-        android:text="Are you ready to be smarter than yesterday?"
-        android:textSize="36sp"
-        android:textStyle="italic"
-        android:visibility="visible"
-        android:alpha="0.0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.23000002" />
 
-    <Button
-        android:id="@+id/goButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="40dp"
-        android:text="GO!"
-        android:textSize="45sp"
-        android:visibility="visible"
-        app:backgroundTint="#5EBA23"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.3" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="©im_oregano007"
-        android:textColor="#FF6363"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goButton"
-        app:layout_constraintVertical_bias="0.71000004" />
 
     <TextView
         android:id="@+id/timerTextV"
@@ -208,7 +161,7 @@
         android:layout_marginBottom="16dp"
         android:text="finish"
         android:textSize="18sp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:backgroundTint="#F44646"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

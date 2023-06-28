@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         showAnimation();
-        countDownTimer.start();
+//        countDownTimer.start();
 
 
     }
@@ -102,9 +102,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             totalS++;
             totalScore.setText(Integer.toString(totalS));
         }
-        if(totalS == 10){
-            resultGenerator();
-        }
+//        if(totalS == 10){
+//            resultGenerator();
+//        }
     }
 
     public void resultGenerator(){
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         finishBtn = findViewById(R.id.finishBtn);
-        goButton = findViewById(R.id.goButton);
+//        goButton = findViewById(R.id.goButton);
         option1 = findViewById(R.id.option1);
         option1.setOnClickListener(this);
         option2 = findViewById(R.id.option2);
@@ -156,13 +156,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         scoreTextV = findViewById(R.id.scoreTextV);
         totalScore = findViewById(R.id.totalScore);
         sumProblem = findViewById(R.id.sumProblem);
-        TextView textView2 = findViewById(R.id.textView2);
-        TextView textView3 = findViewById(R.id.textView3);
+//        TextView textView2 = findViewById(R.id.textView2);
+//        TextView textView3 = findViewById(R.id.textView3);
 
         animationPartOne();
-        textView2.animate().alpha(1).rotation(360).setDuration(500);
+//        textView2.animate().alpha(1).rotation(360).setDuration(500);
 
-        countDownTimer = new CountDownTimer(30000+1000,1000) {
+        countDownTimer = new CountDownTimer(120000+1000,1000) {
             @Override
             public void onTick(long l) {
                 int k = (int)l/1000;
@@ -174,26 +174,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int totalS = Integer.parseInt(totalScore.getText().toString());
                 totalS++;
                 totalScore.setText(Integer.toString(totalS));
-                if(totalS == 10){
-                    resultGenerator();
-                }
-                animationPartOne();
-                sumProblemGenerator();
+                resultGenerator();
+//                if(totalS == 10){
+//                    resultGenerator();
+//                }
+//                animationPartOne();
+//                sumProblemGenerator();
             }
         };
-        goButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goButton.setVisibility(View.INVISIBLE);
-                textView2.setVisibility(View.INVISIBLE);
-                textView3.setVisibility(View.INVISIBLE);
-
-
-                finishBtn.setVisibility(View.VISIBLE);
-                sumProblemGenerator();
-
-            }
-        });
+//        goButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                goButton.setVisibility(View.INVISIBLE);
+//                textView2.setVisibility(View.INVISIBLE);
+//                textView3.setVisibility(View.INVISIBLE);
+//
+//
+//                finishBtn.setVisibility(View.VISIBLE);
+//                sumProblemGenerator();
+//                countDownTimer.start();
+//
+//            }
+//        });
+        sumProblemGenerator();
+        countDownTimer.start();
         finishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -230,7 +234,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.option1:
                 optionT = Integer.parseInt(option1.getText().toString());
                 comparisonFunc(optionT);
-                countDownTimer.cancel();
+//                countDownTimer.cancel();
                 animationPartOne();
                 sumProblemGenerator();
                 break;
@@ -238,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.option2:
                 optionT = Integer.parseInt(option2.getText().toString());
                 comparisonFunc(optionT);
-                countDownTimer.cancel();
+//                countDownTimer.cancel();
                 animationPartOne();
 
                 sumProblemGenerator();
@@ -247,7 +251,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.option3:
                 optionT = Integer.parseInt(option3.getText().toString());
                 comparisonFunc(optionT);
-                countDownTimer.cancel();
+//                countDownTimer.cancel();
                 animationPartOne();
 
                 sumProblemGenerator();
@@ -256,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.option4:
                 optionT = Integer.parseInt(option4.getText().toString());
                 comparisonFunc(optionT);
-                countDownTimer.cancel();
+//                countDownTimer.cancel();
                 animationPartOne();
 
                 sumProblemGenerator();

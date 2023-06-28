@@ -7,6 +7,17 @@
     android:background="#272626"
     tools:context=".ResultActivity">
 
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#B4F65C5C"
+        android:text="LogOut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/resultTextV"
         android:layout_width="wrap_content"
@@ -42,10 +53,26 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:text="©im_oregano007"
-        android:textColor="#FF6363"
+        android:textColor="#DFFF9156"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backToQuiz"
         app:layout_constraintVertical_bias="0.75" />
+
+    <TextView
+        android:id="@+id/resultUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/stroke_background"
+        android:padding="10dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoutBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
