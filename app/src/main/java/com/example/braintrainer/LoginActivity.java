@@ -1,7 +1,9 @@
 package com.example.braintrainer;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -53,8 +55,28 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putString("username",username);
                 editor.apply();
                 startActivity(new Intent(LoginActivity.this,PreviewActivity.class));
+                finish();
             }
         });
 
+    }
+
+    public void onBackPressed() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(LoginActivity.this);
+        alertDialog.setTitle("Exit App");
+        alertDialog.setMessage("Do you want to exit app?");
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finishAffinity();
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        alertDialog.show();
     }
 }

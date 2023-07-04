@@ -16,6 +16,8 @@ public class SplashScreen extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("isLogin",MODE_PRIVATE);
         Boolean isLogIn = pref.getBoolean("flag",false);
         String username = pref.getString("username","username");
+        int urBestScore = pref.getInt("urBestScore",0);
+        String totalScore = pref.getString("totalScore","Na");
 
         new CountDownTimer(5000,1000){
 
@@ -35,6 +37,7 @@ public class SplashScreen extends AppCompatActivity {
                     startActivity(intent);
 
                 }
+                finish();
             }
         }.start();
     }

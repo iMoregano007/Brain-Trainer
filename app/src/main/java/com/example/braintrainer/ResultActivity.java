@@ -16,34 +16,93 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 
 public class ResultActivity extends AppCompatActivity {
-    TextView resultTextV, resultUsername;
+
+    public void bestScoreSetter(int bestScr,String totalScore){
+        String best = bestScr+"/"+totalScore;
+        urBestScore.setText(best);
+    }
+    public void resultGenerator(int speedRemarkP, int accuracyRemarkP){
+        String finalResult = speedRemark[speedRemarkP]+accuracyRemark[accuracyRemarkP]+" Accuracy - "+String.format("%.2f", scorePercentage) +"%";
+        resultTextV.setText(finalResult);
+
+    }
+    double scorePercentage;
+    TextView resultTextV, resultUsername, urScore , urBestScore;
+    int bestScore;
     Button backToQuiz, logoutBtn;
-    String result, username, usernameSetText;
+    String result, username, usernameSetText, urTScore, score;
+    String[] speedRemark= new String[]{"You need to improve your Speed, ","Your Speed was Good can be improved, ","Your Speed was Impressive, "};
+    String[] accuracyRemark= new String[]{"You need to improve your Accuracy, ","Your Accuracy was Good can be improved, ","Your Accuracy was Impressive, "};;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+
         SharedPreferences preferences = getSharedPreferences("isLogin",MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         username = preferences.getString("username","username");
+        bestScore = preferences.getInt("urBestScore",0);
+        urTScore = preferences.getString("totalScore","Na");
         logoutBtn = findViewById(R.id.logoutBtn);
         resultUsername =findViewById(R.id.resultUsername);
         resultTextV = findViewById(R.id.resultTextV);
         backToQuiz = findViewById(R.id.backToQuiz);
+        urBestScore = findViewById(R.id.urBestScore);
+        urScore = findViewById(R.id.urRecentScore);
 
+        bestScoreSetter(bestScore,urTScore);
         usernameSetText = "Hey "+username+",";
         String yourScore = getIntent().getStringExtra("keyyourScore");
         String tScore = getIntent().getStringExtra("keytScore");
         int yourScoreInt = Integer.parseInt(yourScore), tScoreInt = Integer.parseInt(tScore);
         if(tScoreInt == 0){
             result = "You have not attempted the Quiz";
+            resultTextV.setText(result);
+
         } else {
-            double scorePercentage = ((double) yourScoreInt / (double) tScoreInt) * 100.00;
-            result = "Your Score is " + yourScore + " out of " + tScore + ", with accuracy of " + String.format("%.2f", scorePercentage) + "%";
+            scorePercentage = ((double) yourScoreInt / (double) tScoreInt) * 100.00;
+            if(yourScoreInt > bestScore){
+                editor.putInt("urBestScore",yourScoreInt);
+                editor.putString("totalScore", tScore);
+                editor.apply();
+                bestScoreSetter(yourScoreInt,tScore);
+            }
+
+            if(tScoreInt > 15){
+                if(scorePercentage >90.00){
+                    resultGenerator(2,2);
+                } else if (scorePercentage > 70.00) {
+                    resultGenerator(2,1);
+
+                } else{
+                    resultGenerator(2,0);
+                }
+            } else if (tScoreInt >10) {
+                if(scorePercentage >90.00){
+                    resultGenerator(1,2);
+                } else if (scorePercentage > 70.00) {
+                    resultGenerator(1,1);
+
+                } else{
+                    resultGenerator(1,0);
+                }
+
+            } else {
+                if(scorePercentage >90.00){
+                    resultGenerator(0,2);
+                } else if (scorePercentage > 70.00) {
+                    resultGenerator(0,1);
+
+                } else{
+                    resultGenerator(0,0);
+                }
+            }
+
         }
-        resultTextV.setText(result);
         resultUsername.setText(usernameSetText);
+        score = yourScoreInt+"/"+tScoreInt;
+        urScore.setText(score);
 
         resultTextV.setScaleX(0.1f);
         resultTextV.setScaleY(0.1f);
@@ -62,6 +121,8 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View v) {
                 editor.putBoolean("flag",false);
                 editor.putString("username","username");
+                editor.putInt("urBestScore",0);
+                editor.putString("totalScore","Na");
                 editor.apply();
                 startActivity(new Intent(ResultActivity.this,LoginActivity.class));
             }
