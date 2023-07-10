@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.text.DecimalFormat;
 
@@ -22,17 +23,20 @@ public class ResultActivity extends AppCompatActivity {
         urBestScore.setText(best);
     }
     public void resultGenerator(int speedRemarkP, int accuracyRemarkP){
-        String finalResult = speedRemark[speedRemarkP]+accuracyRemark[accuracyRemarkP]+" Accuracy - "+String.format("%.2f", scorePercentage) +"%";
-        resultTextV.setText(finalResult);
+        String finalSpeedResult = speedRemark[speedRemarkP], finalAccuracyResult= accuracyRemark[accuracyRemarkP]+" Accuracy - "+String.format("%.2f", scorePercentage) +"%";
+        speedResultTextV.setText(finalSpeedResult);
+        accuracyResultTextV.setText(finalAccuracyResult);
 
     }
     double scorePercentage;
-    TextView resultTextV, resultUsername, urScore , urBestScore;
+    LinearLayout resultTextV;
+
+    TextView speedResultTextV, accuracyResultTextV, resultUsername, urScore , urBestScore;
     int bestScore;
     Button backToQuiz, logoutBtn;
     String result, username, usernameSetText, urTScore, score;
-    String[] speedRemark= new String[]{"You need to improve your Speed, ","Your Speed was Good can be improved, ","Your Speed was Impressive, "};
-    String[] accuracyRemark= new String[]{"You need to improve your Accuracy, ","Your Accuracy was Good can be improved, ","Your Accuracy was Impressive, "};;
+    String[] speedRemark= new String[]{"You need to improve your Speed ","Your Speed was Good, but can be improved ","Your Speed was Impressive "};
+    String[] accuracyRemark= new String[]{"You need to improve your Accuracy, ","Your Accuracy was Good, but can be improved, ","Your Accuracy was Impressive, "};;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +50,10 @@ public class ResultActivity extends AppCompatActivity {
         urTScore = preferences.getString("totalScore","Na");
         logoutBtn = findViewById(R.id.logoutBtn);
         resultUsername =findViewById(R.id.resultUsername);
+        speedResultTextV = findViewById(R.id.speedResultTextV);
+        accuracyResultTextV = findViewById(R.id.accuracyResultTextV);
         resultTextV = findViewById(R.id.resultTextV);
+
         backToQuiz = findViewById(R.id.backToQuiz);
         urBestScore = findViewById(R.id.urBestScore);
         urScore = findViewById(R.id.urRecentScore);
@@ -58,7 +65,8 @@ public class ResultActivity extends AppCompatActivity {
         int yourScoreInt = Integer.parseInt(yourScore), tScoreInt = Integer.parseInt(tScore);
         if(tScoreInt == 0){
             result = "You have not attempted the Quiz";
-            resultTextV.setText(result);
+            speedResultTextV.setText(result);
+            accuracyResultTextV.setText(result);
 
         } else {
             scorePercentage = ((double) yourScoreInt / (double) tScoreInt) * 100.00;
