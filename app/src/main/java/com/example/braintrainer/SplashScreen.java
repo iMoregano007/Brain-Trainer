@@ -19,7 +19,7 @@ public class SplashScreen extends AppCompatActivity {
         int urBestScore = pref.getInt("urBestScore",0);
         String totalScore = pref.getString("totalScore","Na");
 
-        new CountDownTimer(5000,1000){
+        new CountDownTimer(2000,100){
 
             @Override
             public void onTick(long millisUntilFinished) {

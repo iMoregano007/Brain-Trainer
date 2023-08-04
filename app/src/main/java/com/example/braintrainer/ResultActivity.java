@@ -23,7 +23,7 @@ public class ResultActivity extends AppCompatActivity {
         urBestScore.setText(best);
     }
     public void resultGenerator(int speedRemarkP, int accuracyRemarkP){
-        String finalSpeedResult = speedRemark[speedRemarkP], finalAccuracyResult= accuracyRemark[accuracyRemarkP]+" Accuracy - "+String.format("%.2f", scorePercentage) +"%";
+        String finalSpeedResult = speedRemark[speedRemarkP], finalAccuracyResult= accuracyRemark[accuracyRemarkP]+" \nAccuracy - "+String.format("%.2f", scorePercentage) +"%";
         speedResultTextV.setText(finalSpeedResult);
         accuracyResultTextV.setText(finalAccuracyResult);
 
@@ -119,7 +119,7 @@ public class ResultActivity extends AppCompatActivity {
         backToQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ResultActivity.this,MainActivity.class);
+                Intent intent = new Intent(ResultActivity.this,PreviewActivity.class);
                 startActivity(intent);
             }
         });
